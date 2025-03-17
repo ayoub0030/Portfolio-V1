@@ -563,6 +563,7 @@ button:focus {
   box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
+  color: white !important;
 }
 
 @media (max-width: 767px) {
@@ -784,4 +785,43 @@ button:focus {
 
 .see-more-link:hover {
   text-decoration: underline !important;
+}
+
+/* Skill bars */
+.skill-section {
+  padding: 20px;
+  color: white;
+}
+
+.skill-item {
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  font-size: 1.2em;
+  font-weight: 500;
+  float: left;
+}
+
+.skill-percentage {
+  font-size: 1.2em;
+  font-weight: 500;
+  float: right;
+}
+
+.skill-bar {
+  clear: both;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #c770f0, #8e2de2);
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
 }

@@ -5,6 +5,8 @@ import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
 import Education from "./Education";
+import TechstackHome from "../About/TechstackHome";
+import ProjectsHome from "../Projects/ProjectsHome";
 
 import {
   AiFillGithub,
@@ -53,6 +55,8 @@ function Home() {
       <Home2 /> 
       
       <Education />
+      <TechstackHome />
+      <ProjectsHome />
     
       <Container>
         <Row>
@@ -64,7 +68,7 @@ function Home() {
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/soumyajit4419"
+                  href="https://github.com/ayoub0030"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -84,7 +88,7 @@ function Home() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
+                  href="https://www.linkedin.com/in/ayoub-el-mouden/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -94,7 +98,7 @@ function Home() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.instagram.com/soumyajit4419"
+                  href="https://www.instagram.com/elmoudenayoub/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
