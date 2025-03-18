@@ -2,34 +2,21 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Carousel from "react-bootstrap/Carousel";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
 
 function ProjectCards(props) {
   const [showModal, setShowModal] = useState(false);
 
-  const handleModalOpen = () => setShowModal(true);
-  const handleModalClose = () => setShowModal(false);
-
-  // Additional images for the project (to be shown in the modal)
-  // In a real scenario, you would get these from props
-  const additionalImages = props.additionalImages || [props.imgPath];
-  
-  // Mock technologies used - in real scenario this would come from props
-  const technologies = props.technologies || ["React", "Bootstrap", "JavaScript"];
-  
-  // Mock features - in real scenario this would come from props
-  const features = props.features || [
-    "Responsive design",
-    "Interactive UI", 
-    "Fast performance"
-  ];
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   return (
     <>
-      <Card className="project-card-view" onClick={handleModalOpen}>
+      <Card className="project-card-view" onClick={handleShow}>
         <div className="project-card-img-container">
           <Card.Img variant="top" src={props.imgPath} alt="card-img" />
           <div className="project-card-overlay">
@@ -74,78 +61,89 @@ function ProjectCards(props) {
       {/* Project Details Modal */}
       <Modal 
         show={showModal} 
-        onHide={handleModalClose} 
-        size="lg"
+        onHide={handleClose} 
         centered
-        className="project-modal"
+        dialogClassName="project-modal"
+        contentClassName="project-modal-content"
       >
         <Modal.Header className="project-modal-header">
-          <Modal.Title className="project-modal-title">
-            {props.title}
-          </Modal.Title>
+          <Modal.Title className="project-modal-title">{props.title}</Modal.Title>
           <Button 
             variant="link" 
-            className="project-modal-close-btn" 
-            onClick={handleModalClose}
+            className="project-modal-close" 
+            onClick={handleClose}
           >
-            <AiOutlineClose size={24} />
+            <FaTimes />
           </Button>
         </Modal.Header>
         <Modal.Body className="project-modal-body">
-          <div className="project-modal-image-gallery">
-            {additionalImages.map((img, index) => (
-              <div key={index} className="project-modal-image-container">
-                <img 
-                  src={img} 
-                  alt={`${props.title} screenshot ${index + 1}`} 
-                  className="project-modal-image"
+          {/* Image Carousel */}
+          <Carousel interval={null} className="project-modal-carousel">
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={props.imgPath}
+                alt={props.title}
+              />
+            </Carousel.Item>
+            {props.additionalImages && props.additionalImages.map((img, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100"
+                  src={img}
+                  alt={`${props.title} ${index+1}`}
                 />
-              </div>
+              </Carousel.Item>
             ))}
-          </div>
-          
-          <div className="project-modal-description">
-            <h4>Project Description</h4>
-            <p>{props.description}</p>
-          </div>
-          
+          </Carousel>
+
+          {/* Project Details */}
           <div className="project-modal-details">
-            <div className="project-modal-technologies">
-              <h4>Technologies Used</h4>
-              <ul>
-                {technologies.map((tech, index) => (
-                  <li key={index}>{tech}</li>
-                ))}
-              </ul>
-            </div>
+            <h4>Description</h4>
+            <p>{props.description}</p>
             
-            <div className="project-modal-features">
-              <h4>Key Features</h4>
-              <ul>
-                {features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </div>
+            {props.fullDescription && (
+              <p className="project-modal-full-description">{props.fullDescription}</p>
+            )}
+
+            {props.technologies && (
+              <div className="project-modal-tech">
+                <h4>Technologies</h4>
+                <div className="project-modal-tech-list">
+                  {props.technologies.map((tech, index) => (
+                    <span key={index} className="project-modal-tech-item">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {props.features && (
+              <div className="project-modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                  {props.features.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </Modal.Body>
         <Modal.Footer className="project-modal-footer">
           <Button 
-            className="project-button" 
-            variant="primary" 
+            className="project-button project-modal-button" 
             href={props.ghLink} 
             target="_blank"
           >
-            <BsGithub /> &nbsp; GitHub
+            <BsGithub /> GitHub
           </Button>
-          {props.demoLink && (
+          {!props.isBlog && props.demoLink && (
             <Button
-              className="project-button"
-              variant="primary"
+              className="project-button project-modal-button"
               href={props.demoLink}
               target="_blank"
             >
-              <CgWebsite /> &nbsp; Live Demo
+              <CgWebsite /> Live Demo
             </Button>
           )}
         </Modal.Footer>
