@@ -469,12 +469,155 @@ button:focus {
   border-radius: 15px !important;
   border: 1px solid rgba(200, 137, 230, 0.4) !important;
   overflow: hidden !important;
+  cursor: pointer;
 }
 
 .project-card-view:hover {
   transform: translateY(-7px) !important;
   box-shadow: 0 10px 30px rgba(129, 72, 144, 0.6) !important;
   border-color: rgba(200, 137, 230, 0.8) !important;
+}
+
+.project-modal .modal-content {
+  background-color: rgba(23, 12, 61, 0.95) !important;
+  color: white !important;
+  border: 1px solid rgba(200, 137, 230, 0.6) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 15px 35px rgba(119, 53, 136, 0.5) !important;
+}
+
+.project-modal-header {
+  border-bottom: 1px solid rgba(200, 137, 230, 0.3) !important;
+  padding: 20px 30px !important;
+}
+
+.project-modal-title {
+  color: #c770f0 !important;
+  font-weight: 600 !important;
+  font-size: 1.8em !important;
+}
+
+.project-modal-close-btn {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: color 0.3s ease !important;
+}
+
+.project-modal-close-btn:hover {
+  color: #c770f0 !important;
+}
+
+.project-modal-body {
+  padding: 30px !important;
+}
+
+.project-modal-image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.project-modal-image-container {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(200, 137, 230, 0.4);
+  transition: all 0.3s ease;
+}
+
+.project-modal-image-container:hover {
+  transform: scale(1.02);
+  border-color: rgba(200, 137, 230, 0.8);
+  box-shadow: 0 5px 15px rgba(119, 53, 136, 0.3);
+}
+
+.project-modal-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.project-modal-description h4,
+.project-modal-technologies h4,
+.project-modal-features h4 {
+  color: #c770f0;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.project-modal-description p {
+  margin-bottom: 25px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.project-modal-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.project-modal-technologies,
+.project-modal-features {
+  flex: 1;
+  min-width: 250px;
+}
+
+.project-modal-technologies ul,
+.project-modal-features ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.project-modal-technologies li,
+.project-modal-features li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.project-modal-technologies li:before,
+.project-modal-features li:before {
+  content: '•';
+  color: #c770f0;
+  font-size: 1.5em;
+  position: absolute;
+  left: 5px;
+  top: -5px;
+}
+
+.project-modal-footer {
+  border-top: 1px solid rgba(200, 137, 230, 0.3) !important;
+  padding: 20px 30px !important;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Responsive styles for the modal */
+@media (max-width: 768px) {
+  .project-modal-details {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .project-modal-title {
+    font-size: 1.5em !important;
+  }
+  
+  .project-modal-footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .project-modal-footer .project-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
 .project-card-img-container {
