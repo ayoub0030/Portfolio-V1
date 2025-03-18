@@ -869,6 +869,145 @@ button:focus {
   text-decoration: underline !important;
 }
 
+/* Education Timeline */
+.education-timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.education-timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: linear-gradient(to bottom, #c770f0, #8e2de2);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(199, 112, 240, 0.5);
+}
+
+.timeline-item {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.timeline-item::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #c770f0;
+  border-radius: 50%;
+  z-index: 1;
+  left: 50%;
+  margin-left: -10px;
+  box-shadow: 0 0 10px rgba(199, 112, 240, 0.7);
+  border: 3px solid rgba(23, 12, 61, 0.9);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-date {
+  position: absolute;
+  width: 40%;
+  padding: 10px 20px;
+  text-align: right;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-date span {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.timeline-content {
+  position: relative;
+  width: 45%;
+  padding: 20px 30px;
+  background: rgba(23, 12, 61, 0.9);
+  border: 1px solid rgba(200, 137, 230, 0.4);
+  border-radius: 15px;
+  left: 55%;
+  box-shadow: 0 10px 30px rgba(119, 53, 136, 0.3);
+  transition: all 0.5s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(119, 53, 136, 0.5);
+  border-color: rgba(200, 137, 230, 0.8);
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: #c770f0;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.timeline-content .degree {
+  font-weight: 500;
+  font-size: 1.1em;
+  margin: 10px 0 5px;
+  color: white;
+}
+
+.timeline-content .field {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 15px;
+}
+
+/* Responsive styles for the timeline */
+@media screen and (max-width: 768px) {
+  .education-timeline::after {
+    left: 31px;
+  }
+  
+  .timeline-dot {
+    left: 31px;
+    margin-left: 0;
+    top: 30px;
+    transform: none;
+  }
+  
+  .timeline-date {
+    width: 100%;
+    position: relative;
+    left: 0;
+    text-align: left;
+    padding-left: 70px;
+    margin-bottom: 10px;
+    top: 0;
+    transform: none;
+  }
+  
+  .timeline-content {
+    width: 100%;
+    left: 0;
+    padding-left: 70px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .timeline-content:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 /* Skill bars */
 .skill-section {
   padding: 20px;

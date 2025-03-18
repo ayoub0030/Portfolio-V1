@@ -1,100 +1,70 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { Container } from "react-bootstrap";
 
 function Education() {
   return (
     <Container fluid className="home-about-section" id="education">
       <Container>
         <h1 style={{ fontSize: "2.6em", textAlign: "center" }}>
-          My <span className="purple">Education</span>
+          <span style={{ color: "white" }}>My</span> <span className="purple">Education</span>
         </h1>
         <p style={{ color: "white", textAlign: "center" }}>
           My academic journey and certifications
         </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={6} className="education-card">
-            <Card className="education-card-view">
-              <Card.Body>
-                <Card.Title className="purple" style={{ fontSize: "25px", fontWeight: "bold" }}>2019-2020</Card.Title>
-                <Card.Text style={{ textAlign: "left", fontSize: "22px", fontWeight: "bold", marginTop: "10px" }}>
-                  Baccalaureat
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left", color: "#c770f0", fontWeight: "500" }}>
-                  LYCÉE EL-OULAA
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left" }}>
-                  Baccalaureat Mathimatical science
-                </Card.Text>
-                <Card.Link href="#" className="purple see-more-link">
-                  See more <FaExternalLinkAlt style={{ marginBottom: "2px" }} />
-                </Card.Link>
-              </Card.Body>
-            </Card>
-          </Col>
+        
+        <div className="education-timeline">
+          {/* First Education Item */}
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">
+              <span className="purple">09/2024 - Now</span>
+            </div>
+            <div className="timeline-content">
+              <h3>ENSAM</h3>
+              <p className="degree">Master Degree</p>
+              <p className="field">Field: Big Data and IoT</p>
+            </div>
+          </div>
 
-          <Col md={6} className="education-card">
-            <Card className="education-card-view">
-              <Card.Body>
-                <Card.Title className="purple" style={{ fontSize: "25px", fontWeight: "bold" }}>2020-2025</Card.Title>
-                <Card.Text style={{ textAlign: "left", fontSize: "22px", fontWeight: "bold", marginTop: "10px" }}>
-                  Computer science engineering
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left", color: "#c770f0", fontWeight: "500" }}>
-                  EMSI CENTRE CASABLANCA
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left" }}>
-                  4th year computer science engineering at Emsi...
-                </Card.Text>
-                <Card.Link href="#" className="purple see-more-link">
-                  See more <FaExternalLinkAlt style={{ marginBottom: "2px" }} />
-                </Card.Link>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+          {/* Second Education Item */}
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">
+              <span className="purple">09/2023 - 06/2024</span>
+            </div>
+            <div className="timeline-content">
+              <h3>Higher School of Technology</h3>
+              <p className="degree">Professional Bachelor's Degree</p>
+              <p className="field">Field: Infrastructure, Processing, and Analysis of Big Data</p>
+            </div>
+          </div>
 
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={6} className="education-card">
-            <Card className="education-card-view">
-              <Card.Body>
-                <Card.Title className="purple" style={{ fontSize: "25px", fontWeight: "bold" }}>2021-2022</Card.Title>
-                <Card.Text style={{ textAlign: "left", fontSize: "22px", fontWeight: "bold", marginTop: "10px" }}>
-                  Kaggle Certifications
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left", color: "#c770f0", fontWeight: "500" }}>
-                  KAGGLE
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left" }}>
-                  Certifications in Python, SQL...
-                </Card.Text>
-                <Card.Link href="#" className="purple see-more-link">
-                  See more <FaExternalLinkAlt style={{ marginBottom: "2px" }} />
-                </Card.Link>
-              </Card.Body>
-            </Card>
-          </Col>
+          {/* Third Education Item */}
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">
+              <span className="purple">10/2021 - 07/2023</span>
+            </div>
+            <div className="timeline-content">
+              <h3>EMSI CENTRE CASABLANCA</h3>
+              <p className="degree">Computer Science Engineering</p>
+              <p className="field">Field: Software Engineering</p>
+            </div>
+          </div>
 
-          <Col md={6} className="education-card">
-            <Card className="education-card-view">
-              <Card.Body>
-                <Card.Title className="purple" style={{ fontSize: "25px", fontWeight: "bold" }}>2022-2023</Card.Title>
-                <Card.Text style={{ textAlign: "left", fontSize: "22px", fontWeight: "bold", marginTop: "10px" }}>
-                  GDG badges
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left", color: "#c770f0", fontWeight: "500" }}>
-                  GOOGLE DEVELOPERS
-                </Card.Text>
-                <Card.Text style={{ textAlign: "left" }}>
-                  Badges in DataStore, WorkManager, SQL...
-                </Card.Text>
-                <Card.Link href="#" className="purple see-more-link">
-                  See more <FaExternalLinkAlt style={{ marginBottom: "2px" }} />
-                </Card.Link>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+          {/* Fourth Education Item */}
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">
+              <span className="purple">2019 - 2020</span>
+            </div>
+            <div className="timeline-content">
+              <h3>LYCÉE EL-OULAA</h3>
+              <p className="degree">Baccalaureat</p>
+              <p className="field">Mathematical Science</p>
+            </div>
+          </div>
+        </div>
       </Container>
     </Container>
   );
