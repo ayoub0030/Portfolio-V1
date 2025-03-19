@@ -7,6 +7,12 @@ import {
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
+const total=0;
+const Footer = () => {
+total+=1;
+};
+
+
 function Footer() {
   let date = new Date();
   let year = date.getFullYear();
