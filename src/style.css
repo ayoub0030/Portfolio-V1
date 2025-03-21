@@ -643,16 +643,32 @@ button:focus {
   vertical-align: middle !important;
   text-align: center !important;
   border-radius: 5px !important;
-  display: table !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
   box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
-  color: white !important;
+}
+
+.tech-name {
+  font-size: 0.9rem !important;
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+  color: #c770f0 !important;
+  font-weight: 500 !important;
+  text-align: center !important;
 }
 
 @media (max-width: 767px) {
   .tech-icons {
     margin: 10px !important;
+  }
+  
+  .tech-name {
+    font-size: 0.8rem !important;
+    margin-top: 5px !important;
   }
 }
 
