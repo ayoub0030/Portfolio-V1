@@ -6,12 +6,25 @@ import Carousel from "react-bootstrap/Carousel";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { BiLinkExternal } from "react-icons/bi";
+import { BiLinkExternal, BiZoomIn } from "react-icons/bi";
+import ImageViewer from "./ImageViewer";
 
 function ProjectCards(props) {
   const [showModal, setShowModal] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
+  const [carouselImages, setCarouselImages] = useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Prepare all images for the carousel
+  useEffect(() => {
+    const images = [props.imgPath];
+    if (props.additionalImages && props.additionalImages.length > 0) {
+      images.push(...props.additionalImages);
+    }
+    setCarouselImages(images);
+  }, [props.imgPath, props.additionalImages]);
 
   useEffect(() => {
     // Check if the device is mobile
@@ -42,6 +55,33 @@ function ProjectCards(props) {
     } else {
       setShowModal(true);
     }
+  };
+  
+  const openFullscreenImage = (imageSrc) => {
+    setFullscreenImage(imageSrc);
+    // Find the index of the clicked image
+    const index = carouselImages.findIndex(img => img === imageSrc);
+    if (index !== -1) {
+      setCurrentImageIndex(index);
+    }
+  };
+  
+  const closeFullscreenImage = () => {
+    setFullscreenImage(null);
+  };
+  
+  const navigateImages = (direction) => {
+    if (carouselImages.length <= 1) return;
+    
+    let newIndex;
+    if (direction === 'next') {
+      newIndex = (currentImageIndex + 1) % carouselImages.length;
+    } else {
+      newIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
+    }
+    
+    setCurrentImageIndex(newIndex);
+    setFullscreenImage(carouselImages[newIndex]);
   };
 
   return (
@@ -121,19 +161,31 @@ function ProjectCards(props) {
             controls={props.additionalImages && props.additionalImages.length > 0}
           >
             <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={props.imgPath}
-                alt={props.title}
-              />
+              <div className="carousel-image-container">
+                <img
+                  className="d-block w-100"
+                  src={props.imgPath}
+                  alt={props.title}
+                  onClick={() => openFullscreenImage(props.imgPath)}
+                />
+                <div className="image-zoom-indicator">
+                  <BiZoomIn />
+                </div>
+              </div>
             </Carousel.Item>
             {props.additionalImages && props.additionalImages.map((img, index) => (
               <Carousel.Item key={index}>
-                <img
-                  className="d-block w-100"
-                  src={img}
-                  alt={`${props.title} ${index+1}`}
-                />
+                <div className="carousel-image-container">
+                  <img
+                    className="d-block w-100"
+                    src={img}
+                    alt={`${props.title} ${index+1}`}
+                    onClick={() => openFullscreenImage(img)}
+                  />
+                  <div className="image-zoom-indicator">
+                    <BiZoomIn />
+                  </div>
+                </div>
               </Carousel.Item>
             ))}
           </Carousel>
@@ -189,6 +241,18 @@ function ProjectCards(props) {
           )}
         </Modal.Footer>
       </Modal>
+      
+      {/* Fullscreen Image Viewer */}
+      {fullscreenImage && (
+        <ImageViewer 
+          src={fullscreenImage} 
+          alt={props.title} 
+          onClose={closeFullscreenImage}
+          onNext={() => navigateImages('next')}
+          onPrev={() => navigateImages('prev')}
+          hasMultipleImages={carouselImages.length > 1}
+        />
+      )}
     </>
   );
 }
