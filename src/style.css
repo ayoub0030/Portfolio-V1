@@ -1237,8 +1237,13 @@ button:focus {
 /* Responsive design for modals */
 @media (max-width: 768px) {
   .project-modal {
-    max-width: 100% !important;
-    margin: 0 10px !important;
+    max-width: 95% !important;
+    margin: 0 auto !important;
+  }
+  
+  .project-modal-content {
+    margin: 15px !important;
+    border-radius: 15px !important;
   }
   
   .project-modal-title {
@@ -1251,7 +1256,7 @@ button:focus {
   }
   
   .project-modal-carousel img {
-    max-height: 200px !important;
+    max-height: 250px !important;
   }
   
   .project-modal-tech-list {
@@ -1272,6 +1277,44 @@ button:focus {
     width: 100% !important;
     justify-content: center !important;
   }
+}
+
+/* Mobile-specific hover effects */
+@media (max-width: 768px) {
+  .project-card-img-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .project-card-img-container::after {
+    content: "Tap to view";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(107, 32, 197, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    opacity: 0.9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .project-card-view:active .project-card-img-container img {
+    transform: scale(0.95);
+  }
+}
+
+/* Project Modal Backdrop */
+.project-modal-backdrop {
+  background-color: rgba(12, 5, 29, 0.85) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Image click effect for mobile */
+.project-card-img-container img.clicked {
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
 }
 
 .btn-primary {

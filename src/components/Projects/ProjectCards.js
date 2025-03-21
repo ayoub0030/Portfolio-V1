@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -10,15 +10,50 @@ import { BiLinkExternal } from "react-icons/bi";
 
 function ProjectCards(props) {
   const [showModal, setShowModal] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if the device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  
+  const handleShow = () => {
+    if (isMobile) {
+      // Add click effect for mobile
+      setIsClicked(true);
+      setTimeout(() => {
+        setIsClicked(false);
+        setShowModal(true);
+      }, 150);
+    } else {
+      setShowModal(true);
+    }
+  };
 
   return (
     <>
       <Card className="project-card-view" onClick={handleShow}>
         <div className="project-card-img-container">
-          <Card.Img variant="top" src={props.imgPath} alt="card-img" />
+          <Card.Img 
+            variant="top" 
+            src={props.imgPath} 
+            alt="card-img" 
+            className={isClicked ? "clicked" : ""}
+          />
           <div className="project-card-overlay">
             <h3>{props.title}</h3>
           </div>
@@ -65,6 +100,7 @@ function ProjectCards(props) {
         centered
         dialogClassName="project-modal"
         contentClassName="project-modal-content"
+        backdropClassName="project-modal-backdrop"
       >
         <Modal.Header className="project-modal-header">
           <Modal.Title className="project-modal-title">{props.title}</Modal.Title>
@@ -78,7 +114,12 @@ function ProjectCards(props) {
         </Modal.Header>
         <Modal.Body className="project-modal-body">
           {/* Image Carousel */}
-          <Carousel interval={null} className="project-modal-carousel">
+          <Carousel 
+            interval={null} 
+            className="project-modal-carousel"
+            indicators={props.additionalImages && props.additionalImages.length > 0}
+            controls={props.additionalImages && props.additionalImages.length > 0}
+          >
             <Carousel.Item>
               <img
                 className="d-block w-100"
