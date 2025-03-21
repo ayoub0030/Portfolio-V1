@@ -8,9 +8,7 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 
 const total=0;
-const Footer = () => {
-total+=1;
-};
+
 
 
 function Footer() {
